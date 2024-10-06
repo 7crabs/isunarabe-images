@@ -31,3 +31,11 @@ remote_directory "/etc/nginx/tls" do
   mode "0755"
   source "tls"
 end
+
+remote_file "/var/lib/cloud/scripts/per-instance/update_cert.sh" do
+  owner "root"
+  group "root"
+  mode "0755"
+  source "update_cert.sh"
+  only_if "ls /var/lib/cloud/scripts/per-instance/"
+end
